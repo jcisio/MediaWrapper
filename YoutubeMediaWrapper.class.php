@@ -12,13 +12,13 @@ class YoutubeMediaWrapper extends MediaWrapper {
   function __construct($text) {
     foreach (self::$patterns as $pattern) {
       if (preg_match($pattern, $text, $match)) {
-        parent::__construct(array('v' => $match[1]));
+        parent::__construct(array('id' => $match[1]));
         return;
       }
     }
   }
   function thumbnail() {
-    return 'http://img.youtube.com/vi/'. $this->info['v'] .'/0.jpg';
+    return 'http://img.youtube.com/vi/'. $this->info['id'] .'/0.jpg';
   }
 }
 

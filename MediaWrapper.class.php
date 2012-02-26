@@ -7,7 +7,7 @@
  */
 
 class MediaWrapper {
-  protected $info = array();
+  public $info = array();
   protected static $players = array(
     'Youtube' => '#(www\.youtube\.com|youtu\.be)/#',
     'Dailymotion' => '#dailymotion\.com#',
@@ -29,7 +29,9 @@ class MediaWrapper {
       if (preg_match($search, $text)) {
         $className = $name . 'MediaWrapper';
         require_once $className . '.class.php';
-        return new $className($text);
+        $wrapper = new $className($text);
+        $wrapper->info['provider'] = $name;
+        return $wrapper;
       }
     }
   }
