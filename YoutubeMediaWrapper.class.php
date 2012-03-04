@@ -20,5 +20,13 @@ class YoutubeMediaWrapper extends MediaWrapper {
   function thumbnail() {
     return 'http://img.youtube.com/vi/'. $this->info['id'] .'/0.jpg';
   }
+
+  function player($options = array()) {
+    parent::player_options($options);
+    switch ($options['mode']) {
+      default:
+        return '<iframe class="youtube-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="http://www.youtube.com/embed/' . $this->info['id'] . '" frameborder="0"></iframe>';
+    }
+  }
 }
 

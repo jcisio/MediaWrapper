@@ -12,6 +12,8 @@ class MediaWrapper {
     'Youtube' => '#(www\.youtube\.com|youtu\.be)/#',
     'Dailymotion' => '#dailymotion\.com#',
   );
+  public function thumbnail() {}
+  public function player($options) {}
 
   function __construct($info) {
     $this->info = $info;
@@ -34,6 +36,22 @@ class MediaWrapper {
         return $wrapper;
       }
     }
+  }
+
+  /**
+   * Fill default options.
+   */
+  public static function player_options(&$options) {
+    if (empty($options)) {
+      $options = array();
+    }
+    $options += array(
+      'mode' => 'auto',
+      'width' => 560,
+      'height' => 315,
+    );
+    $options['width'] = (int) $options['width'];
+    $options['height'] = (int) $options['height'];
   }
 }
 
