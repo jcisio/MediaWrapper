@@ -1,7 +1,7 @@
 ## Introduction ##
 
-Author: Hai-Nam Nguyen (jcisio)
-Homepage: https://github.com/jcisio/MediaWrapper
+* Author: Hai-Nam Nguyen (jcisio)
+* Homepage: https://github.com/jcisio/MediaWrapper
 
 ## Quick start ##
 
