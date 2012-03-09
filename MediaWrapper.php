@@ -30,7 +30,7 @@ class MediaWrapper {
     foreach (self::$players as $name => $search) {
       if (preg_match($search, $text)) {
         $className = $name . 'MediaWrapper';
-        require_once $className . '.class.php';
+        require_once $className . '.php';
         $wrapper = new $className($text);
         $wrapper->info['provider'] = $name;
         return $wrapper;
