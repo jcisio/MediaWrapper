@@ -9,8 +9,9 @@
 class MediaWrapper {
   public $info = array();
   protected static $players = array(
-    'Youtube' => '#(www\.youtube\.com|youtu\.be)/#',
     'Dailymotion' => '#dailymotion\.com#',
+    'Vimeo' => '#vimeo\.com#',
+    'Youtube' => '#(www\.youtube\.com|youtu\.be)/#',
   );
   public function thumbnail() {}
   public function player($options) {}
