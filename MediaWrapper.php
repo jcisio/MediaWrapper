@@ -14,6 +14,12 @@ class MediaWrapper {
     'Youtube' => '#(www\.youtube\.com|youtu\.be)/#',
   );
   public function thumbnail() {}
+  /**
+   * Renders an embedded player.
+   *
+   * @param array $options Player options.
+   *   Pass NULL to remove an option from default value (e.g. 'wmode' => NULL).
+   */
   public function player($options) {}
 
   function __construct($info) {
@@ -45,6 +51,11 @@ class MediaWrapper {
   public static function player_options(&$options) {
     if (empty($options)) {
       $options = array();
+    }
+    foreach ($options as $key => $value) {
+      if ($value === NULL) {
+        unset($options[$key]);
+      }
     }
     $options += array(
       'mode' => 'auto',

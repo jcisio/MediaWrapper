@@ -22,7 +22,7 @@ class VimeoMediaWrapper extends MediaWrapper {
   }
 
   function player($options = array()) {
-    parent::player_options($options);
+    $this->player_options($options);
     switch ($options['mode']) {
       default:
         return '<iframe class="vimeo-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="http://player.vimeo.com/video/' . $this->info['id'] . '?title=0&amp;byline=0&amp;portrait=0" frameborder="0"></iframe>';

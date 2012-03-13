@@ -22,7 +22,7 @@ class DailymotionMediaWrapper extends MediaWrapper {
   }
 
   function player($options = array()) {
-    parent::player_options($options);
+    $this->player_options($options);
     switch ($options['mode']) {
       default:
         return '<iframe class="dailymotion-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="http://www.dailymotion.com/embed/video/' . $this->info['id'] . '" frameborder="0"></iframe>';
