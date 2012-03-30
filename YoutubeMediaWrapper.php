@@ -7,7 +7,7 @@
 class YoutubeMediaWrapper extends MediaWrapper {
   private static $patterns = array(
     '#http://youtu\.be/([a-zA-Z0-9_]+)#',
-    '#http://www\.youtube\.com/\S+[\?&]v=([a-zA-Z0-9_]+)#',
+    '#http://www\.youtube\.com/\S+[\?&]v=([a-zA-Z0-9\-_]+)#',
   );
   function __construct($text) {
     foreach (self::$patterns as $pattern) {
