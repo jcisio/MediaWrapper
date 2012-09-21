@@ -8,6 +8,8 @@
 Example:
 
     include 'MediaWrapper/MediaWrapper.php';
-    $m = MediaWrapper::getWrapper('http://www.youtube.com/watch?v=vyfzw09jjEo');
+    $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?v=vyfzw09jjEo');
     print $m->thumbnail();
-    print $m->player();
+
+See example.php for more examples.
+
