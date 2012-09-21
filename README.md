@@ -13,3 +13,20 @@ Example:
 
 See example.php for more examples.
 
+## Use cases ##
+
+MediaWrapper is extensible.
+
+### Write your own wrapper ###
+
+You can look at the MediaWrapper/Wrapper folder for examples. Once you have
+your wrapper, include that file and register that wrapper using
+
+    MediaWrapper::getInstance()->register();
+
+### Override the output ###
+
+You can extend a wrapper, keep the pattern and override the player() function.
+Do not forget to unregister the old wrapper so that only yours takes care of
+that pattern.
+

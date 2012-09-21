@@ -24,6 +24,11 @@ class MediaWrapper {
     }
 
     // Loops through each wrapper to get the URL detect patterns.
+    self::register();
+  }
+
+  // Scan and register all wrapper.
+  public function register() {
     foreach (get_declared_classes() as $class) {
       if (preg_match('/^MediaWrapper\\\\Wrapper\\\\(\S+)$/', $class, $match)) {
         $name = $match[1];
@@ -38,6 +43,12 @@ class MediaWrapper {
         }
       }
     }
+  }
+
+  // Removes a wrapper (because you want to make another wrapper for the same
+  // pattern).
+  public function unregister($name) {
+    unset(self::$wrappers[$name]);
   }
 
   public static function getInstance() {
