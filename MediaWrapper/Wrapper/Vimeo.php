@@ -16,7 +16,7 @@ class Vimeo extends Wrapper {
       '#http://vimeo.com/([0-9]+)#',
     );
 
-    parent:__construct($text);
+    parent::__construct($text);
   }
 
   function thumbnail() {
