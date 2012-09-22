@@ -2,6 +2,7 @@
 
 * Author: Hai-Nam Nguyen (jcisio)
 * Homepage: https://github.com/jcisio/MediaWrapper
+* Requires **PHP 5.3** or later (because namespace is used)
 
 ## Quick start ##
 
