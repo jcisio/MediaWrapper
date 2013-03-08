@@ -10,9 +10,9 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testYoutube() {
-    $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?v=vyfzw09jjEo');
-    $this->assertEquals('http://img.youtube.com/vi/vyfzw09jjEo/0.jpg', $m->thumbnail());
-    $this->assertEquals('<iframe class="youtube-player" type="text/html" width="560" height="315" src="http://www.youtube.com/embed/vyfzw09jjEo?wmode=transparent" frameborder="0"></iframe>', $m->player());
+    $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?v=9bZkp7q19f0');
+    $this->assertEquals('http://img.youtube.com/vi/9bZkp7q19f0/0.jpg', $m->thumbnail());
+    $this->assertEquals('<iframe class="youtube-player" type="text/html" width="560" height="315" src="http://www.youtube.com/embed/9bZkp7q19f0?wmode=transparent" frameborder="0"></iframe>', $m->player());
 
     $m->player_options(array('width' => '200', 'height' => '100'));
     $this->assertEquals('<iframe class="youtube-player" type="text/html" width="200" height="100" src="http://www.youtube.com/embed/vyfzw09jjEo?wmode=transparent" frameborder="0"></iframe>', $m->player());
