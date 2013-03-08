@@ -14,6 +14,11 @@ Example:
 
 See example.php for more examples.
 
+Test with PHPUnit:
+
+    Composer install --dev
+    vendor/phpunit/phpunit/phpunit.php Tests/MediaWrapperTest.php
+
 ## Use cases ##
 
 MediaWrapper is extensible.
