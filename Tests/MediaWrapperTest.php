@@ -4,8 +4,6 @@
  * PHPUnit tests for MediaWrapper.
  */
 
-include __DIR__ . '/../vendor/autoload.php';
-
 class MediaWrapperTest extends PHPUnit_Framework_TestCase {
   function __construct() {
     include_once __DIR__ . '/../MediaWrapper/MediaWrapper.php';
