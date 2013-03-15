@@ -10,6 +10,9 @@ abstract class Wrapper implements WrapperInterface {
 
   public static $detect;
 
+  // API keys
+  protected $key;
+
   // Patterns to extract media ID from URL
   protected static $patterns;
 
@@ -49,5 +52,11 @@ abstract class Wrapper implements WrapperInterface {
     }
   }
 
+  /**
+   * Set API keys.
+   */
+  public function setKey($key) {
+    $this->key = $key;
+  }
 }
 
