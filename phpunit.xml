@@ -1,0 +1,7 @@
+<phpunit color="true">
+  <testsuites>
+    <testsuite name="MediaWrapper Test Suite">
+      <directory>Tests</directory>
+    </testsuite>
+  </testsuites>
+</phpunit>

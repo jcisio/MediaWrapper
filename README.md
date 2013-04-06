@@ -20,6 +20,10 @@ Test with PHPUnit:
     Composer install --dev
     vendor/phpunit/phpunit/phpunit.php Tests/MediaWrapperTest.php
 
+or simply
+
+    phpunit
+
 ## Use cases ##
 
 MediaWrapper is extensible.
