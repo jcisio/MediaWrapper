@@ -36,6 +36,13 @@ abstract class Wrapper implements WrapperInterface {
   }
 
   /**
+   * Return a media info.
+   */
+  public function getInfo($key) {
+    return @$this->info[$key];
+  }
+
+  /**
    * Fill default options.
    */
   public function player_options(array $options) {
