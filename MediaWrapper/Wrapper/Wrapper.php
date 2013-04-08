@@ -44,19 +44,22 @@ abstract class Wrapper implements WrapperInterface {
 
   /**
    * Fill default options.
+   *
+   * @param array $options
+   * @param boolean $set
+   *   Whether to set the $this->options value.
+   *
+   * @return
+   *   Combined options array.
    */
-  public function player_options(array $options) {
-    if (empty($options)) {
-      $options = array();
+  public function player_options(array $options, $set = TRUE) {
+    $options = array_filter(array_merge($this->options, $options), function($var) {return !is_null($var);});
+
+    if ($set) {
+      $this->options = $options;
     }
-    foreach ($options as $key => $value) {
-      if ($value === NULL) {
-        unset($this->options[$key]);
-      }
-      else {
-        $this->options[$key] = $value;
-      }
-    }
+
+    return $options;
   }
 
   /**
