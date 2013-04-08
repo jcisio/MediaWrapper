@@ -36,7 +36,7 @@ class Vimeo extends Wrapper {
 
     switch ($this->options['mode']) {
       default:
-        return '<iframe class="vimeo-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="http://player.vimeo.com/video/' . $this->info['id'] . '?' . http_build_query($query, '', '&amp;') . '" frameborder="0"></iframe>';
+        return '<iframe class="vimeo-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="http://player.vimeo.com/video/' . $this->info['id'] . '?' . http_build_query($query) . '" frameborder="0"></iframe>';
     }
   }
 }
