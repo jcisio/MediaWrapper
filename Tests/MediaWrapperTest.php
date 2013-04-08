@@ -26,7 +26,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('<iframe class="youtube-player" type="text/html" width="200" height="100" src="http://www.youtube.com/embed/9bZkp7q19f0?wmode=transparent" frameborder="0"></iframe>', $m->player());
 
     // Now pass directly the options
-    $this->assertEquals('<iframe class="youtube-player" type="text/html" width="400" height="200" src="http://www.youtube.com/embed/9bZkp7q19f0?wmode=transparent" frameborder="0"></iframe>', $m->player(array('width' => '400', 'height' => '200')));
+    $this->assertEquals('<iframe class="youtube-player" type="text/html" width="400" height="200" src="http://www.youtube.com/embed/9bZkp7q19f0?wmode=transparent&autoplay=1" frameborder="0"></iframe>', $m->player(array('width' => '400', 'height' => '200', 'autoplay' => 1)));
 
     // Test if options are overriden by the last passed option.
     $this->assertEquals('<iframe class="youtube-player" type="text/html" width="200" height="100" src="http://www.youtube.com/embed/9bZkp7q19f0?wmode=transparent" frameborder="0"></iframe>', $m->player());

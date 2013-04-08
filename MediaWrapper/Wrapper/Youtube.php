@@ -32,7 +32,7 @@ class Youtube extends Wrapper {
 
   function player(array $options = array()) {
     $options = $this->player_options($options, FALSE);
-    $query = array_intersect_key($options, array('wmode' => 0, 'autostart' => 0));;
+    $query = array_intersect_key($options, array('wmode' => 0, 'autoplay' => 0));;
 
     switch ($options['mode']) {
       default:
