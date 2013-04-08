@@ -36,7 +36,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
     $m = MediaWrapper::getInstance()->getWrapper('http://vimeo.com/56488043');
     $this->assertImageUrl($m->thumbnail());
     $this->assertEquals('http://b.vimeocdn.com/ts/391/133/391133096_640.jpg', $m->thumbnail());
-    $this->assertEquals('<iframe class="vimeo-player" type="text/html" width="560" height="315" src="http://player.vimeo.com/video/56488043?title=0&byline=0&portrait=0" frameborder="0"></iframe>', $m->player());
+    $this->assertEquals('<iframe class="vimeo-player" type="text/html" width="560" height="315" src="http://player.vimeo.com/video/56488043?byline=0&portrait=0" frameborder="0"></iframe>', $m->player());
   }
 }
 

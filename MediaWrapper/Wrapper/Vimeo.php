@@ -28,7 +28,6 @@ class Vimeo extends Wrapper {
     );
 
     $this->options += array(
-      'title' => 0,
       'byline' => 0,
       'portrait' => 0,
     );
