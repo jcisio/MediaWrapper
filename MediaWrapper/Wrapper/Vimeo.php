@@ -2,6 +2,8 @@
 /**
  * @file
  * Vimeo wrapper.
+ *
+ * Reference: http://developer.vimeo.com/player/embedding
  */
 
 namespace MediaWrapper\Wrapper;
@@ -10,6 +12,15 @@ class Vimeo extends Wrapper {
 
   // Pattern to detect if an URL be longs to us
   public static $detect = '#vimeo\.com#';
+
+  public static $allowed_options = array(
+    'title',
+    'byline',
+    'portrait',
+    'color',
+    'autoplay',
+    'loop',
+  );
 
   function __construct($text) {
     self::$patterns = array(
@@ -32,7 +43,7 @@ class Vimeo extends Wrapper {
 
   function player(array $options = array()) {
     $options = $this->player_options($options, FALSE);
-    $query = array_intersect_key($options, array('title' => 0, 'byline' => 0, 'portrait' => 0));
+    $query = array_intersect_key($options, array_fill_keys(self::$allowed_options, '0'));
 
     switch ($this->options['mode']) {
       default:

@@ -13,6 +13,17 @@ class Youtube extends Wrapper {
   // Pattern to detect if an URL be longs to us
   public static $detect = '#(www\.youtube\.com|youtu\.be)/#';
 
+  public static $allowed_options = array(
+    'wmode',
+    'autoplay',
+    'cc_load_policy',
+    'controls',
+    'loop',
+    'showinfo',
+    'start',
+    'theme',
+  );
+
   function __construct($text) {
     self::$patterns = array(
       '#https?://youtu\.be/([a-zA-Z0-9_]+)#',
@@ -32,7 +43,7 @@ class Youtube extends Wrapper {
 
   function player(array $options = array()) {
     $options = $this->player_options($options, FALSE);
-    $query = array_intersect_key($options, array('wmode' => 0, 'autoplay' => 0));;
+    $query = array_intersect_key($options, array_fill_keys(self::$allowed_options, 0));
 
     switch ($options['mode']) {
       default:

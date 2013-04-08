@@ -10,6 +10,8 @@ abstract class Wrapper implements WrapperInterface {
 
   public static $detect;
 
+  public static $allowed_options = array();
+
   // API keys
   protected $key;
 
