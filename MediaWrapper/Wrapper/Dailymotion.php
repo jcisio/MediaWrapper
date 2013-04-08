@@ -25,10 +25,10 @@ class Dailymotion extends Wrapper {
   }
 
   function player(array $options = array()) {
-    $this->player_options($options);
+    $options = $this->player_options($options, FALSE);
     switch ($this->options['mode']) {
       default:
-        return '<iframe class="dailymotion-player" type="text/html" width="' . $this->options['width'] . '" height="' . $this->options['height'] . '" src="http://www.dailymotion.com/embed/video/' . $this->info['id'] . '" frameborder="0"></iframe>';
+        return '<iframe class="dailymotion-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="http://www.dailymotion.com/embed/video/' . $this->info['id'] . '" frameborder="0"></iframe>';
     }
   }
 }

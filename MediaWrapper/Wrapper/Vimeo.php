@@ -16,6 +16,12 @@ class Vimeo extends Wrapper {
       '#http://vimeo.com/([0-9]+)#',
     );
 
+    $this->options += array(
+      'title' => 0,
+      'byline' => 0,
+      'portrait' => 0,
+    );
+
     parent::__construct($text);
   }
 
@@ -25,10 +31,12 @@ class Vimeo extends Wrapper {
   }
 
   function player(array $options = array()) {
-    $this->player_options($options);
+    $options = $this->player_options($options, FALSE);
+    $query = array_intersect_key($options, array('title' => 0, 'byline' => 0, 'portrait' => 0));
+
     switch ($this->options['mode']) {
       default:
-        return '<iframe class="vimeo-player" type="text/html" width="' . $this->options['width'] . '" height="' . $this->options['height'] . '" src="http://player.vimeo.com/video/' . $this->info['id'] . '?title=0&amp;byline=0&amp;portrait=0" frameborder="0"></iframe>';
+        return '<iframe class="vimeo-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="http://player.vimeo.com/video/' . $this->info['id'] . '?' . http_build_query($query, '', '&amp;') . '" frameborder="0"></iframe>';
     }
   }
 }

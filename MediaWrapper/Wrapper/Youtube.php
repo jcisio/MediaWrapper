@@ -2,6 +2,8 @@
 /**
  * @file
  * Youtube wrapper.
+ *
+ * Reference: https://developers.google.com/youtube/player_parameters
  */
 
 namespace MediaWrapper\Wrapper;
@@ -29,10 +31,12 @@ class Youtube extends Wrapper {
   }
 
   function player(array $options = array()) {
-    $this->player_options($options);
-    switch ($this->options['mode']) {
+    $options = $this->player_options($options, FALSE);
+    $query = array_intersect_key($options, array('wmode' => 0, 'autostart' => 0));;
+
+    switch ($options['mode']) {
       default:
-        return '<iframe class="youtube-player" type="text/html" width="' . $this->options['width'] . '" height="' . $this->options['height'] . '" src="http://www.youtube.com/embed/' . $this->info['id'] . (isset($this->options['wmode']) ? '?wmode=' . $this->options['wmode'] : '') . '" frameborder="0"></iframe>';
+        return '<iframe class="youtube-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="http://www.youtube.com/embed/' . $this->info['id'] . ($query ? '?' . http_build_query($query) : ''). '" frameborder="0"></iframe>';
     }
   }
 }
