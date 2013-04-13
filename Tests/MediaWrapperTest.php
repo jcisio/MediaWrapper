@@ -30,6 +30,10 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
 
     // Test if options are overriden by the last passed option.
     $this->assertEquals('<iframe class="youtube-player" type="text/html" width="200" height="100" src="http://www.youtube.com/embed/9bZkp7q19f0?wmode=transparent" frameborder="0"></iframe>', $m->player());
+
+    // Test with extra data on the url.
+    $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?feature=player_embedded&v=IdioCTTwdw8');
+    $this->assertEquals('http://img.youtube.com/vi/IdioCTTwdw8/0.jpg', $m->thumbnail());
   }
 
   public function testVimeo() {
