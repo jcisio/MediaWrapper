@@ -19,22 +19,35 @@ class MediaWrapper {
     require_once 'Wrapper/Wrapper.php';
 
     // Loads all wrappers
+    $wrappers = array();
     foreach (glob(dirname(__FILE__) . '/Wrapper/*.php') as $filename) {
       require_once $filename;
+      $wrappers[] = basename($filename, '.php');
     }
 
     // Loops through each wrapper to get the URL detect patterns.
-    self::register();
+    self::register($wrappers);
   }
 
-  // Scan and register all wrapper.
-  public function register() {
+  /**
+   * Registers a list of wrappers.
+   *
+   * @param mixed $wrappers
+   *   List of wrappers to registered. Pass an empty list to register all
+   *   defined wrappers.
+   */
+  public function register($wrappers = array()) {
     foreach (get_declared_classes() as $class) {
       if (preg_match('/^MediaWrapper\\\\Wrapper\\\\(\S+)$/', $class, $match)) {
         $name = $match[1];
 
         // We skip our abstract class
         if ($name === 'Wrapper') {
+          continue;
+        }
+
+        // We skip also non specified classes.
+        if ($wrappers && !in_array($name, $wrappers)) {
           continue;
         }
 
@@ -45,10 +58,28 @@ class MediaWrapper {
     }
   }
 
-  // Removes a wrapper (because you want to make another wrapper for the same
-  // pattern).
-  public function unregister($name) {
-    unset(self::$wrappers[$name]);
+  /**
+   * Removes one or more wrappers.
+   *
+   * It is useful because you want to make another wrapper for the same
+   * pattern).
+   *
+   * @param mixed $name
+   *   (optional) a wrapper or an array of wrapper. Pass an empty list to remove
+   *   all wrappers.
+   */
+  public function unregister($name = NULL) {
+    if (!$name) {
+      $self::$wrappers = array();
+    }
+    else {
+      if (!is_array($name)) {
+        $name = array($name);
+      }
+      foreach ($name as $class) {
+        unset(self::$wrappers[$class]);
+      }
+    }
   }
 
   public static function getInstance() {
