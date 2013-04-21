@@ -42,5 +42,14 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('http://b.vimeocdn.com/ts/391/133/391133096_640.jpg', $m->thumbnail());
     $this->assertEquals('<iframe class="vimeo-player" type="text/html" width="560" height="315" src="http://player.vimeo.com/video/56488043?byline=0&portrait=0" frameborder="0"></iframe>', $m->player());
   }
+
+  public function testCacheSystem() {
+    require __DIR__ . '/RandomWrapper.php';
+    MediaWrapper::register(array('RandomWrapper'));
+    $m = MediaWrapper::getInstance()->getWrapper('http://test.com/1982');
+    $value1 = $m->player();
+    $value2 = $m->player();
+    $this->assertEquals($value1, $value2, 'Test if data is fetched from cache.');
+  }
 }
 

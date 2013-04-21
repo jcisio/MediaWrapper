@@ -21,6 +21,9 @@ abstract class Wrapper implements WrapperInterface {
   // Info about the current media
   protected $info;
 
+  // Cache handler. It must be an object with set/get methods.
+  protected $cache;
+
   // Options for the player
   protected $options = array(
     'mode' => 'auto',
@@ -32,9 +35,14 @@ abstract class Wrapper implements WrapperInterface {
     foreach (self::$patterns as $pattern) {
       if (preg_match($pattern, $text, $match)) {
         $this->info = array('id' => $match[1]);
-        return;
+        break;
       }
     }
+
+    $cache = function_exists('apc_fetch') && apc_store('apc_check', 1, -1) ? 'ApcCache' : 'ArrayCache';
+    require_once __DIR__ . '/../Cache/' . $cache . '.php';
+    $classname = '\MediaWrapper\Cache\\' . $cache;
+    $this->cache = new $classname;
   }
 
   /**
@@ -69,6 +77,13 @@ abstract class Wrapper implements WrapperInterface {
    */
   public function setKey($key) {
     $this->key = $key;
+  }
+
+  /**
+   * Set cache handler.
+   */
+  public function setCache($cache) {
+    $this->cache = $cache;
   }
 }
 
