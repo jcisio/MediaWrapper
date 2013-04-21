@@ -46,8 +46,16 @@ class Twitter extends Wrapper {
     $query = array_intersect_key($options, array_fill_keys(self::$allowed_options, 0));
     $query += array('id' => $this->info['id']);
 
-    $data = json_decode(file_get_contents('https://api.twitter.com/1/statuses/oembed.json?' . http_build_query($query)));
-    return $data ? $data->html : '';
+    $url = 'https://api.twitter.com/1/statuses/oembed.json?' . http_build_query($query);
+    $cache_id = md5($url);
+    if (!$html = $this->cache->get($cache_id)) {
+      $data = json_decode(file_get_contents($url));
+      if ($data) {
+        $html = $data->html;
+        $this->cache->set($cache_id, $html);
+      }
+    }
+    return $html;
   }
 }
 
