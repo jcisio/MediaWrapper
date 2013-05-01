@@ -3,7 +3,7 @@
 * Author: Hai-Nam Nguyen (jcisio)
 * Homepage: https://github.com/jcisio/MediaWrapper
 * Requires **PHP 5.3** or later (because namespace is used)
-* It is used by [Internet Sources field](http://drupal.org/project/isfield) Drupal module.
+* It is used by Drupal modules like [Internet Sources field](http://drupal.org/project/isfield) or [Content Attachment](http://drupal.org/project/attach).
 
 ## Quick start ##
 
