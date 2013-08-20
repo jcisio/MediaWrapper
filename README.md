@@ -11,18 +11,25 @@ Example:
 
     include 'MediaWrapper/MediaWrapper.php';
     $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?v=vyfzw09jjEo');
+    // Print the thumbnail.
     print $m->thumbnail();
-
-See example.php for more examples.
+    // Print the full player.
+    print $m->player();
+    // Set default player options.
+    $m->player_options(array('width' => '200', 'height' => '100'));
+    // Print the full player again with new default options.
+    print $m->player();
+    // Override default options and print the full player.
+    print $m->player(array('height' => '120'));
 
 Test with PHPUnit:
 
+    phpunit
+
+or if you don't have PHPUnit:
+
     Composer install --dev
     vendor/phpunit/phpunit/phpunit.php Tests/MediaWrapperTest.php
-
-or simply
-
-    phpunit
 
 ## Use cases ##
 
