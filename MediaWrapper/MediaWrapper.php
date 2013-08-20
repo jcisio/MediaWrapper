@@ -36,7 +36,7 @@ class MediaWrapper {
    *   List of wrappers to registered. Pass an empty list to register all
    *   defined wrappers.
    */
-  public function register($wrappers = array()) {
+  public static function register($wrappers = array()) {
     foreach (get_declared_classes() as $class) {
       if (preg_match('/^MediaWrapper\\\\Wrapper\\\\(\S+)$/', $class, $match)) {
         $name = $match[1];
@@ -68,7 +68,7 @@ class MediaWrapper {
    *   (optional) a wrapper or an array of wrapper. Pass an empty list to remove
    *   all wrappers.
    */
-  public function unregister($name = NULL) {
+  public static function unregister($name = NULL) {
     if (!$name) {
       $self::$wrappers = array();
     }
@@ -96,7 +96,7 @@ class MediaWrapper {
    *   Any string that can be used to detect the resource (url, shortened url,
    *   embedded code...)
    */
-  public function getWrapper($text) {
+  public static function getWrapper($text) {
     foreach (self::$wrappers as $name => $search) {
       if (preg_match($search, $text)) {
         $className = 'MediaWrapper\Wrapper\\' . $name;
