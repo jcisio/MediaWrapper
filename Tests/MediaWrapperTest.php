@@ -18,7 +18,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
 
   public function testYoutube() {
     $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?v=9bZkp7q19f0');
-    $this->assertEquals('http://img.youtube.com/vi/9bZkp7q19f0/0.jpg', $m->thumbnail());
+    $this->assertEquals('http://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg', $m->thumbnail());
     $this->assertImageUrl($m->thumbnail());
     $this->assertEquals('<iframe class="youtube-player" type="text/html" width="560" height="315" src="http://www.youtube.com/embed/9bZkp7q19f0?wmode=transparent" frameborder="0"></iframe>', $m->player());
 
@@ -33,12 +33,12 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
 
     // Test with extra data on the url.
     $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?feature=player_embedded&v=IdioCTTwdw8');
-    $this->assertEquals('http://img.youtube.com/vi/IdioCTTwdw8/0.jpg', $m->thumbnail());
+    $this->assertEquals('http://img.youtube.com/vi/IdioCTTwdw8/maxresdefault.jpg', $m->thumbnail());
   }
 
   public function testYoutubeSpecial() {
     $m = MediaWrapper::getInstance()->getWrapper('http://youtu.be/f620pz-Dyk0');
-    $this->assertEquals('http://img.youtube.com/vi/f620pz-Dyk0/0.jpg', $m->thumbnail());
+    $this->assertEquals('http://img.youtube.com/vi/f620pz-Dyk0/maxresdefault.jpg', $m->thumbnail());
     $this->assertImageUrl($m->thumbnail());
   }
 
