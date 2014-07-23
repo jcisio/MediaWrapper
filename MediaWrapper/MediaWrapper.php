@@ -70,7 +70,7 @@ class MediaWrapper {
    */
   public static function unregister($name = NULL) {
     if (!$name) {
-      $self::$wrappers = array();
+      self::$wrappers = array();
     }
     else {
       if (!is_array($name)) {
