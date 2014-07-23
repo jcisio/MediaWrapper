@@ -23,7 +23,14 @@ class Dailymotion extends Wrapper {
       $pattern = '#http://www\.dailymotion\.com/video/([a-zA-Z0-9]+)#';
       if (preg_match($pattern, $text, $match)) {
         $long_id = $match[1];
-        $data = json_decode(file_get_contents('https://api.dailymotion.com/video/' . $long_id));
+        $url = 'https://api.dailymotion.com/video/' . $long_id;
+        $cache_id = md5($url);
+        if (!$data = $this->cache->get($cache_id)) {
+          $data = json_decode(file_get_contents($url));
+          if ($data) {
+            $this->cache->set($cache_id, $data);
+          }
+        }
         $this->info = array('id' => $data->id);
       }
     }
