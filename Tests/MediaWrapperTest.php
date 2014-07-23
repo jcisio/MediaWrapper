@@ -43,7 +43,15 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
     
     $m = MediaWrapper::getInstance()->getWrapper('https://www.youtube.com/watch?feature=player_embedded&amp;v=9bZkp7q19f0');
     $this->assertEquals('9bZkp7q19f0', $m->getInfo('id'));
-   }
+  }
+
+  public function testDailymotion() {
+    $m = MediaWrapper::getInstance()->getWrapper('http://www.dailymotion.com/video/x1mun8');
+    $this->assertEquals('x1mun8', $m->getInfo('id'));
+
+    $m = MediaWrapper::getInstance()->getWrapper('http://www.dailymotion.com/video/6pU29dPYNlqCLbwiw');
+    $this->assertEquals('x1mun8', $m->getInfo('id'));
+  }
 
   public function testVimeo() {
     $m = MediaWrapper::getInstance()->getWrapper('http://vimeo.com/56488043');

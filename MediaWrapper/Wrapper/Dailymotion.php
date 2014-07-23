@@ -18,6 +18,15 @@ class Dailymotion extends Wrapper {
     );
 
     parent::__construct($text);
+
+    if (!($this->info)) {
+      $pattern = '#http://www\.dailymotion\.com/video/([a-zA-Z0-9]+)#';
+      if (preg_match($pattern, $text, $match)) {
+        $long_id = $match[1];
+        $data = json_decode(file_get_contents('https://api.dailymotion.com/video/' . $long_id));
+        $this->info = array('id' => $data->id);
+      }
+    }
   }
 
   function thumbnail() {
