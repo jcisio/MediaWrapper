@@ -1,6 +1,15 @@
 {
   "name": "jcisio/media-wrapper",
   "type": "library",
+  "authors": [
+    {
+      "name": "Hai-Nam Nguyen"
+    }
+  ],
+  "license": [
+    "GPL-2.0+",
+    "MIT"
+  ],
   "require": {
     "php": ">=5.3.5"
   },
