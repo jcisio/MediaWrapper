@@ -26,9 +26,8 @@ class Youtube extends Wrapper {
 
   function __construct($text) {
     self::$patterns = array(
-      '#https?://youtu\.be/([a-zA-Z0-9\-_]+)#',
-      '#https?://www\.youtube\.com/\S+[\?&;]v=([a-zA-Z0-9\-_]+)#',
-      '#https?://www\.youtube-nocookie\.com/\S+[\?&;]v=([a-zA-Z0-9\-_]+)#',
+      '#https?://youtu\.be/(?<id>[a-zA-Z0-9\-_]+)#',
+      '#https?://www\.youtube(-nocookie)?\.com/\S+[\?&;]v=(?<id>[a-zA-Z0-9\-_]+)#',
     );
 
     $this->options += array(
@@ -52,4 +51,3 @@ class Youtube extends Wrapper {
     }
   }
 }
-

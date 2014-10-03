@@ -34,7 +34,8 @@ abstract class Wrapper implements WrapperInterface {
   function __construct($text) {
     foreach (self::$patterns as $pattern) {
       if (preg_match($pattern, $text, $match)) {
-        $this->info = array('id' => $match[1]);
+        $id = isset($match['id']) ? $match['id'] : $match[1];
+        $this->info = array('id' => $id);
         break;
       }
     }

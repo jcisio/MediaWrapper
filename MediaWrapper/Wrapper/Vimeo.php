@@ -24,7 +24,7 @@ class Vimeo extends Wrapper {
 
   function __construct($text) {
     self::$patterns = array(
-      '#http://vimeo.com/([0-9]+)#',
+      '#http://vimeo.com/(?<id>[0-9]+)#',
     );
 
     $this->options += array(

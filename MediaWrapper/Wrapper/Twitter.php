@@ -25,7 +25,7 @@ class Twitter extends Wrapper {
 
   function __construct($text) {
     self::$patterns = array(
-      '#https?://twitter\.com/[a-zA-Z0-9_]+/status/(\d+)#',
+      '#https?://twitter\.com/[a-zA-Z0-9_]+/status/(?<id>\d+)#',
     );
 
     $this->options += array(
