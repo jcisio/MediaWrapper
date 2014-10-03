@@ -11,7 +11,7 @@ namespace MediaWrapper\Wrapper;
 class Youtube extends Wrapper {
 
   // Pattern to detect if an URL be longs to us
-  public static $detect = '#(www\.youtube\.com|youtu\.be)/#';
+  public static $detect = '#(www\.youtube(-nocookie)?\.com|youtu\.be)/#';
 
   public static $allowed_options = array(
     'wmode',
@@ -28,6 +28,7 @@ class Youtube extends Wrapper {
     self::$patterns = array(
       '#https?://youtu\.be/([a-zA-Z0-9\-_]+)#',
       '#https?://www\.youtube\.com/\S+[\?&;]v=([a-zA-Z0-9\-_]+)#',
+      '#https?://www\.youtube-nocookie\.com/\S+[\?&;]v=([a-zA-Z0-9\-_]+)#',
     );
 
     $this->options += array(
