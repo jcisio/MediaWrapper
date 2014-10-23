@@ -54,5 +54,5 @@ that pattern.
 
 MediaWrapper in most cases uses the default player provided by each service. To make the player responsive (e.g. width = 100%), you can use CSS to make the iframe responsive. There are a lot of tutorial out there.
 
-Another solution is to use the excellent and tiny [Fitvids JS](http://fitvidsjs.com/) library to make all videos responsive. It takes care of your CSS.
+Another solution is to use the excellent and tiny [Fitvids JS](http://fitvidsjs.com/) jQuery plugin to make all videos responsive. It takes care of your CSS.
 
