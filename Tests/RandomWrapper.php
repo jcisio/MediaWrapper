@@ -17,7 +17,7 @@ class RandomWrapper extends Wrapper {
     parent::__construct($text);
   }
 
-  function thumbnail() {
+  function thumbnail($absolute = TRUE) {
     return '';
   }
 

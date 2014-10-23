@@ -35,7 +35,7 @@ class Twitter extends Wrapper {
     parent::__construct($text);
   }
 
-  function thumbnail() {
+  function thumbnail($absolute = TRUE) {
     // Currently it is hard to return a thumbnail without using API 1.1 (that
     // requires OAuth authentication).
     return '';

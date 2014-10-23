@@ -37,9 +37,10 @@ class Vimeo extends Wrapper {
     parent::__construct($text);
   }
 
-  function thumbnail() {
+  function thumbnail($absolute = TRUE) {
     $data = unserialize(file_get_contents('http://vimeo.com/api/v2/video/' . $this->info['id'] . '.php'));
-    return $data[0]['thumbnail_large'];
+    $thumbnail = $absolute ? $data[0]['thumbnail_large'] : preg_replace('/^[a-z]+:/', '', $data[0]['thumbnail_large']);
+    return $thumbnail;
   }
 
   function player(array $options = array()) {
@@ -48,7 +49,7 @@ class Vimeo extends Wrapper {
 
     switch ($this->options['mode']) {
       default:
-        return '<iframe class="vimeo-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="http://player.vimeo.com/video/' . $this->info['id'] . '?' . http_build_query($query) . '" frameborder="0"></iframe>';
+        return '<iframe class="vimeo-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="//player.vimeo.com/video/' . $this->info['id'] . '?' . http_build_query($query) . '" frameborder="0"></iframe>';
     }
   }
 }

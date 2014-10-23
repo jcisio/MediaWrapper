@@ -37,8 +37,8 @@ class Youtube extends Wrapper {
     parent::__construct($text);
   }
 
-  function thumbnail() {
-    return 'http://img.youtube.com/vi/'. $this->info['id'] .'/maxresdefault.jpg';
+  function thumbnail($absolute = TRUE) {
+  return ($absolute ? 'http:' : '') . '//img.youtube.com/vi/'. $this->info['id'] .'/maxresdefault.jpg';
   }
 
   function player(array $options = array()) {
@@ -47,7 +47,7 @@ class Youtube extends Wrapper {
 
     switch ($options['mode']) {
       default:
-        return '<iframe class="youtube-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="http://www.youtube.com/embed/' . $this->info['id'] . ($query ? '?' . http_build_query($query) : ''). '" frameborder="0"></iframe>';
+        return '<iframe class="youtube-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="//www.youtube.com/embed/' . $this->info['id'] . ($query ? '?' . http_build_query($query) : ''). '" frameborder="0"></iframe>';
     }
   }
 }

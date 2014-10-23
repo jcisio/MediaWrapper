@@ -10,7 +10,7 @@ interface WrapperInterface {
   /**
    * Returns thumbnail of the media.
    */
-  public function thumbnail();
+  public function thumbnail($absolute = TRUE);
 
   /**
    * Renders an embedded player.
