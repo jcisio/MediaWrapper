@@ -37,7 +37,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
 
     // Test with extra data on the url.
     $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?feature=player_embedded&v=IdioCTTwdw8');
-    $this->assertEquals('http://img.youtube.com/vi/IdioCTTwdw8/maxresdefault.jpg', $m->thumbnail());
+    $this->assertImageUrl($m->thumbnail());
   }
 
   public function testYoutubeSpecial() {

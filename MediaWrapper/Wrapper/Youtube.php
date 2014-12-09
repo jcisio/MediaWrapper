@@ -38,7 +38,23 @@ class Youtube extends Wrapper {
   }
 
   function thumbnail($absolute = TRUE) {
-  return ($absolute ? 'http:' : '') . '//img.youtube.com/vi/'. $this->info['id'] .'/maxresdefault.jpg';
+    $url = 'http://img.youtube.com/vi/'. $this->info['id'] .'/maxresdefault.jpg';
+
+    if (function_exists('curl_init')) {
+      $handle = curl_init($url);
+      curl_setopt($handle,  CURLOPT_RETURNTRANSFER, TRUE);
+      curl_exec($handle);
+      $httpCode = curl_getinfo($handle, CURLINFO_HTTP_CODE);
+      curl_close($handle);
+
+      if ($httpCode == 404) {
+        // Use the mq instead of hq thumbnail to keep the same aspect ratio (16:9)
+        // with maxres thumbnail.
+        $url = 'http://img.youtube.com/vi/'. $this->info['id'] .'/mqdefault.jpg';
+      }
+    }
+
+    return $absolute ? $url : substr($url, 5);
   }
 
   function player(array $options = array()) {
