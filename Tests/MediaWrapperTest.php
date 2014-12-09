@@ -17,6 +17,9 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testYoutube() {
+    $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?v=EJEBGf_uS_M');
+    $this->assertImageUrl($m->thumbnail());
+
     $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?v=9bZkp7q19f0');
     $this->assertEquals('http://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg', $m->thumbnail());
     $this->assertEquals('//img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg', $m->thumbnail(FALSE));
