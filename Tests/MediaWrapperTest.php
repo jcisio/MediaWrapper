@@ -65,6 +65,12 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('<iframe class="vimeo-player" type="text/html" width="560" height="315" src="//player.vimeo.com/video/56488043?byline=0&portrait=0" frameborder="0"></iframe>', $m->player());
   }
 
+  public function testInstagram() {
+    $m = MediaWrapper::getInstance()->getWrapper('http://instagram.com/p/xjZx0BOOUs');
+    $this->assertImageUrl($m->thumbnail());
+    $this->assertContains('class="instagram-media"', $m->player());
+  }
+
   public function testCacheSystem() {
     require __DIR__ . '/RandomWrapper.php';
     MediaWrapper::register(array('RandomWrapper'));
