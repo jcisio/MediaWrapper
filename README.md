@@ -31,7 +31,7 @@ Test with PHPUnit:
 or if you don't have PHPUnit:
 
     Composer install --dev
-    vendor/phpunit/phpunit/phpunit.php Tests/MediaWrapperTest.php
+    vendor/phpunit/phpunit/phpunit
 
 ## Use cases ##
 
