@@ -9,18 +9,24 @@ interface WrapperInterface {
 
   /**
    * Returns thumbnail of the media.
+   *
+   * @param boolean $absolute
+   *   Whether the return URL is absolute. Default to TRUE.
+   * @return string
    */
   public function thumbnail($absolute = TRUE);
 
   /**
    * Renders an embedded player.
    *
-   * @param array $options Player options.
+   * @param array $options
+   *   Player options.
+   * @return string
    */
   public function player(array $options = array());
 
   /**
-   * Fill default options.
+   * Fills default options.
    *
    * @param array $options
    *   Pass NULL to a key to remove an option from default value (e.g.
@@ -30,10 +36,9 @@ interface WrapperInterface {
    * @param boolean $set
    *   Whether to set the $this->options value.
    *
-   * @return
+   * @return array $options
    *   Combined options array.
    */
   public function player_options(array $options, $set = TRUE);
 
 }
-

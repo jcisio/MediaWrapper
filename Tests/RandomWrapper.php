@@ -29,5 +29,5 @@ class RandomWrapper extends Wrapper {
     }
     return $result;
   }
-}
 
+}

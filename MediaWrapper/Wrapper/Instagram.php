@@ -13,9 +13,6 @@ class Instagram extends Wrapper {
   // Pattern to detect if an URL be longs to us
   public static $detect = '#(instagram\.com|instagr\.am)/p/#';
 
-  public static $allowed_options = array(
-  );
-
   function __construct($text) {
     self::$patterns = array(
       '#https?://(instagram\.com|instagr\.am)/p/(?<id>[a-zA-Z0-9\-_]+)#',
@@ -58,4 +55,5 @@ class Instagram extends Wrapper {
     }
     return $html;
   }
+
 }

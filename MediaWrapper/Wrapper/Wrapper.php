@@ -26,8 +26,11 @@ abstract class Wrapper implements WrapperInterface {
 
   // Options for the player
   protected $options = array(
+    // Player mode can be auto, html5, flash etc. but currently not used in core.
     'mode' => 'auto',
+    // Player width
     'width' => 560,
+    // Player height
     'height' => 315,
   );
 
@@ -56,12 +59,7 @@ abstract class Wrapper implements WrapperInterface {
   /**
    * Fill default options.
    *
-   * @param array $options
-   * @param boolean $set
-   *   Whether to set the $this->options value.
-   *
-   * @return
-   *   Combined options array.
+   * {@inheritdoc}
    */
   public function player_options(array $options, $set = TRUE) {
     $options = array_filter(array_merge($this->options, $options), function($var) {return !is_null($var);});
@@ -78,6 +76,7 @@ abstract class Wrapper implements WrapperInterface {
    */
   public function setKey($key) {
     $this->key = $key;
+    return $this;
   }
 
   /**
@@ -85,6 +84,7 @@ abstract class Wrapper implements WrapperInterface {
    */
   public function setCache($cache) {
     $this->cache = $cache;
+    return $this;
   }
-}
 
+}

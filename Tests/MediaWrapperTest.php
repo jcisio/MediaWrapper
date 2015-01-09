@@ -79,5 +79,5 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
     $value2 = $m->player();
     $this->assertEquals($value1, $value2, 'Test if data is fetched from cache.');
   }
-}
 
+}

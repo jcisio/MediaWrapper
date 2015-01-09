@@ -47,10 +47,7 @@ class Vimeo extends Wrapper {
     $options = $this->player_options($options, FALSE);
     $query = array_intersect_key($options, array_fill_keys(self::$allowed_options, '0'));
 
-    switch ($this->options['mode']) {
-      default:
-        return '<iframe class="vimeo-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="//player.vimeo.com/video/' . $this->info['id'] . '?' . http_build_query($query) . '" frameborder="0"></iframe>';
-    }
+    return '<iframe class="vimeo-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="//player.vimeo.com/video/' . $this->info['id'] . '?' . http_build_query($query) . '" frameborder="0"></iframe>';
   }
-}
 
+}

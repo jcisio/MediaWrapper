@@ -57,5 +57,5 @@ class Twitter extends Wrapper {
     }
     return $html;
   }
-}
 
+}
