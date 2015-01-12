@@ -1,4 +1,6 @@
 [![Build Status](https://secure.travis-ci.org/jcisio/MediaWrapper.png?branch=master)](https://travis-ci.org/jcisio/MediaWrapper)
+[![Code Climate](https://codeclimate.com/github/jcisio/MediaWrapper/badges/gpa.svg)](https://codeclimate.com/github/jcisio/MediaWrapper)
+[![Test Coverage](https://codeclimate.com/github/jcisio/MediaWrapper/badges/coverage.svg)](https://codeclimate.com/github/jcisio/MediaWrapper)
 
 ## Introduction ##
 
