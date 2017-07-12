@@ -44,7 +44,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
     $m = MediaWrapper::getInstance()->getWrapper('http://youtu.be/f620pz-Dyk0');
     $this->assertEquals('http://img.youtube.com/vi/f620pz-Dyk0/maxresdefault.jpg', $m->thumbnail());
     $this->assertImageUrl($m->thumbnail());
-    
+
     $m = MediaWrapper::getInstance()->getWrapper('https://www.youtube.com/watch?feature=player_embedded&amp;v=9bZkp7q19f0');
     $this->assertEquals('9bZkp7q19f0', $m->getInfo('id'));
   }
@@ -60,8 +60,8 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
   public function testVimeo() {
     $m = MediaWrapper::getInstance()->getWrapper('http://vimeo.com/56488043');
     $this->assertImageUrl($m->thumbnail());
-    $this->assertEquals('http://i.vimeocdn.com/video/462300929_640.jpg', $m->thumbnail());
-    $this->assertEquals('//i.vimeocdn.com/video/462300929_640.jpg', $m->thumbnail(FALSE));
+    $this->assertEquals('http://i.vimeocdn.com/video/515444387_640.jpg', $m->thumbnail());
+    $this->assertEquals('//i.vimeocdn.com/video/515444387_640.jpg', $m->thumbnail(FALSE));
     $this->assertEquals('<iframe class="vimeo-player" type="text/html" width="560" height="315" src="//player.vimeo.com/video/56488043?byline=0&portrait=0" frameborder="0"></iframe>', $m->player());
   }
 
