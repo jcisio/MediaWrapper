@@ -11,7 +11,10 @@ class Dailymotion extends Wrapper {
   // Pattern to detect if an URL be longs to us
   public static $detect = '#dailymotion\.com#';
 
-  function __construct($text) {
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct($text) {
     self::$patterns = array(
       '#http://www\.dailymotion\.com/video/(?<id>[a-zA-Z0-9]+)_#',
       '#http://www\.dailymotion\.com/[a-z]+/video/(?<id>[a-zA-Z0-9]+)#',
@@ -36,11 +39,24 @@ class Dailymotion extends Wrapper {
     }
   }
 
-  function thumbnail($absolute = TRUE) {
+  /**
+   * {@inheritdoc}
+   */
+  public function thumbnail($absolute = TRUE) {
     return ($absolute ? 'http:' : '') . '//www.dailymotion.com/thumbnail/video/' . $this->info['id'];
   }
 
-  function player(array $options = array()) {
+  /**
+   * {@inheritdoc}
+   */
+  public function title() {
+    return '';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function player(array $options = array()) {
     $options = $this->player_options($options, FALSE);
     return '<iframe class="dailymotion-player" type="text/html" width="' . $options['width'] . '" height="' . $options['height'] . '" src="//www.dailymotion.com/embed/video/' . $this->info['id'] . '" frameborder="0"></iframe>';
   }

@@ -22,7 +22,10 @@ class Vimeo extends Wrapper {
     'loop',
   );
 
-  function __construct($text) {
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct($text) {
     self::$patterns = array(
       '#https?://vimeo.com/(?<id>[0-9]+)#',
       '#https?://vimeo.com/channels/.*?/(?<id>[0-9]+)#',
@@ -37,13 +40,26 @@ class Vimeo extends Wrapper {
     parent::__construct($text);
   }
 
-  function thumbnail($absolute = TRUE) {
+  /**
+   * {@inheritdoc}
+   */
+  public function thumbnail($absolute = TRUE) {
     $data = unserialize(file_get_contents('http://vimeo.com/api/v2/video/' . $this->info['id'] . '.php'));
     $thumbnail = $absolute ? $data[0]['thumbnail_large'] : preg_replace('/^[a-z]+:/', '', $data[0]['thumbnail_large']);
     return $thumbnail;
   }
 
-  function player(array $options = array()) {
+  /**
+   * {@inheritdoc}
+   */
+  public function title() {
+    return '';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function player(array $options = array()) {
     $options = $this->player_options($options, FALSE);
     $query = array_intersect_key($options, array_fill_keys(self::$allowed_options, '0'));
 

@@ -23,7 +23,10 @@ class Twitter extends Wrapper {
     'lang',
   );
 
-  function __construct($text) {
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct($text) {
     self::$patterns = array(
       '#https?://twitter\.com/[a-zA-Z0-9_]+/status/(?<id>\d+)#',
     );
@@ -35,13 +38,26 @@ class Twitter extends Wrapper {
     parent::__construct($text);
   }
 
-  function thumbnail($absolute = TRUE) {
+  /**
+   * {@inheritdoc}
+   */
+  public function thumbnail($absolute = TRUE) {
     // Currently it is hard to return a thumbnail without using API 1.1 (that
     // requires OAuth authentication).
     return '';
   }
 
-  function player(array $options = array()) {
+  /**
+   * {@inheritdoc}
+   */
+  public function title() {
+    return '';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function player(array $options = array()) {
     $options = $this->player_options($options, FALSE);
     $query = array_intersect_key($options, array_fill_keys(self::$allowed_options, 0));
     $query += array('id' => $this->info['id']);

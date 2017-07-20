@@ -39,7 +39,10 @@ class Youtube extends Wrapper {
     'theme',
   );
 
-  function __construct($text) {
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct($text) {
     self::$patterns = array(
       '#https?://youtu\.be/(?<id>[a-zA-Z0-9\-_]+)#',
       '#https?://www\.youtube(-nocookie)?\.com/\S+[\?&;]v=(?<id>[a-zA-Z0-9\-_]+)#',
@@ -52,7 +55,10 @@ class Youtube extends Wrapper {
     parent::__construct($text);
   }
 
-  function thumbnail($absolute = TRUE) {
+  /**
+   * {@inheritdoc}
+   */
+  public function thumbnail($absolute = TRUE) {
     $url = 'http://img.youtube.com/vi/'. $this->info['id'] .'/maxresdefault.jpg';
 
     if (function_exists('curl_init')) {
@@ -72,7 +78,37 @@ class Youtube extends Wrapper {
     return $absolute ? $url : substr($url, 5);
   }
 
-  function player(array $options = array()) {
+  /**
+   * {@inheritdoc}
+   */
+  public function title() {
+    $url = 'https://www.youtube.com/watch?v=' . $this->getInfo('id');
+    if (!$data = file_get_contents($url)) {
+      return '';
+    }
+
+    if (function_exists('mb_convert_encoding') && class_exists('DOMDocument')) {
+      // DOMDocument does not work well with UTF-8, we need to use HTML entities
+      // to be safe.
+      $data = mb_convert_encoding($data, 'HTML-ENTITIES', 'UTF-8');
+      $dom = new \DOMDocument();
+      $dom->preserveWhiteSpace = FALSE;
+      @$dom->loadHTML($data);
+
+      foreach ($dom->getElementsByTagName('meta') as $meta) {
+        if ($meta->getAttribute('name') == 'title') {
+          return $meta->getAttribute('content');
+        }
+      }
+    }
+
+    return '';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function player(array $options = array()) {
     $options = $this->player_options($options, FALSE);
     $query = array_intersect_key($options, array_fill_keys(self::$allowed_options, 0));
 

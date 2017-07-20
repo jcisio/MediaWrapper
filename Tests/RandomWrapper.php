@@ -9,7 +9,10 @@ class RandomWrapper extends Wrapper {
     'lang',
   );
 
-  function __construct($text) {
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct($text) {
     self::$patterns = array(
       '#https?://test\.com/(\d+)#',
     );
@@ -17,11 +20,24 @@ class RandomWrapper extends Wrapper {
     parent::__construct($text);
   }
 
-  function thumbnail($absolute = TRUE) {
+  /**
+   * {@inheritdoc}
+   */
+  public function thumbnail($absolute = TRUE) {
     return '';
   }
 
-  function player(array $options = array()) {
+  /**
+   * {@inheritdoc}
+   */
+  public function title() {
+    return '';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function player(array $options = array()) {
     $cache_id = 'random:' . $this->info['id'] . ':' . serialize($options);
     if (!$result = $this->cache->get($cache_id)) {
       $result = rand(1, 1000000);

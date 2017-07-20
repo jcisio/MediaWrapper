@@ -13,7 +13,10 @@ class Instagram extends Wrapper {
   // Pattern to detect if an URL be longs to us
   public static $detect = '#(instagram\.com|instagr\.am)/p/#';
 
-  function __construct($text) {
+  /**
+   * {@inheritdoc}
+   */
+  public function __construct($text) {
     self::$patterns = array(
       '#https?://(instagram\.com|instagr\.am)/p/(?<id>[a-zA-Z0-9\-_]+)#',
     );
@@ -21,7 +24,10 @@ class Instagram extends Wrapper {
     parent::__construct($text);
   }
 
-  function thumbnail($absolute = TRUE) {
+  /**
+   * {@inheritdoc}
+   */
+  public function thumbnail($absolute = TRUE) {
     $url = 'http://instagram.com/p/' . $this->info['id'] .'/media/';
 
     if (function_exists('curl_init')) {
@@ -39,7 +45,17 @@ class Instagram extends Wrapper {
     return $absolute ? $url : substr($url, 5);
   }
 
-  function player(array $options = array()) {
+  /**
+   * {@inheritdoc}
+   */
+  public function title() {
+    return '';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function player(array $options = array()) {
     $options = $this->player_options($options, FALSE);
     $query = array_intersect_key($options, array_fill_keys(self::$allowed_options, 0));
     $query += array('url' => 'http://instagr.am/p/' . $this->info['id']);

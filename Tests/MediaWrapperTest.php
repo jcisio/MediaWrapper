@@ -38,6 +38,9 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
     // Test with extra data on the url.
     $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?feature=player_embedded&v=IdioCTTwdw8');
     $this->assertImageUrl($m->thumbnail());
+
+    // Test with title.
+    $this->assertEquals('How to install Facebook Home on your Android phone', $m->title());
   }
 
   public function testYoutubeSpecial() {

@@ -17,6 +17,13 @@ interface WrapperInterface {
   public function thumbnail($absolute = TRUE);
 
   /**
+   * Renders media title.
+   *
+   * @return string
+   */
+  public function title();
+
+  /**
    * Renders an embedded player.
    *
    * @param array $options
