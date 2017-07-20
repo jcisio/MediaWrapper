@@ -4,12 +4,17 @@
  * PHPUnit tests for MediaWrapper.
  */
 
+// Compatibility with PHPUnit 6.
+if (class_exists('\PHPUnit\Framework\TestCase') && !class_exists('\PHPUnit_Framework_TestCase')) {
+  class_alias('\PHPUnit\Framework\TestCase', '\PHPUnit_Framework_TestCase');
+}
+
 class MediaWrapperTest extends PHPUnit_Framework_TestCase {
   function __construct() {
     include_once __DIR__ . '/../MediaWrapper/MediaWrapper.php';
   }
 
-  function assertImageUrl($url) {
+  public function assertImageUrl($url) {
     $size = getimagesize($url);
     $this->assertTrue(is_array($size));
     $this->assertArrayHasKey('mime', $size);
