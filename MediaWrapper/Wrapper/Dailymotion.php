@@ -16,7 +16,7 @@ class Dailymotion extends Wrapper {
    */
   public function __construct($text) {
     self::$patterns = array(
-      '#http://www\.dailymotion\.com/video/(?<id>[a-zA-Z0-9]+)_#',
+      '#http://www\.dailymotion\.com/video/(?<id>[a-zA-Z0-9]+)#',
       '#http://www\.dailymotion\.com/[a-z]+/video/(?<id>[a-zA-Z0-9]+)#',
     );
 
