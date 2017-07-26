@@ -66,7 +66,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
     $this->assertEquals('x1mun8', $m->getInfo('id'));
 
     $m = MediaWrapper::getInstance()->getWrapper('http://dai.ly/x1mun8');
-    $this->assertInstanceOf(\MediaWrapper\Wrapper\Dailymotion::class, $m);
+    $this->assertInstanceOf('MediaWrapper\Wrapper\Dailymotion', $m);
     $this->assertEquals('x1mun8', $m->getInfo('id'));
 
     $m = MediaWrapper::getInstance()->getWrapper('http://www.dailymotion.com/video/x4xvnz_the-funny-crash-compilation_fun');
