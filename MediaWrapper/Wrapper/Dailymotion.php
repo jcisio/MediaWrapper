@@ -9,15 +9,16 @@ namespace MediaWrapper\Wrapper;
 class Dailymotion extends Wrapper {
 
   // Pattern to detect if an URL be longs to us
-  public static $detect = '#dailymotion\.com#';
+  public static $detect = '#(dailymotion\.com|dai\.ly)#';
 
   /**
    * {@inheritdoc}
    */
   public function __construct($text) {
     self::$patterns = array(
-      '#http://www\.dailymotion\.com/video/(?<id>[a-zA-Z0-9]+)_#',
-      '#http://www\.dailymotion\.com/[a-z]+/video/(?<id>[a-zA-Z0-9]+)#',
+      '#https?://www\.dailymotion\.com/video/(?<id>[a-zA-Z0-9]{3,8})(_|$)#',
+      '#https?://www\.dailymotion\.com/[a-z]+/video/(?<id>[a-zA-Z0-9]+)#',
+      '#https?://dai\.ly/(?<id>[a-zA-Z0-9]+)#',
     );
 
     parent::__construct($text);
