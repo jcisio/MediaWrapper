@@ -28,7 +28,7 @@ class Twitter extends Wrapper {
    */
   public function __construct($text) {
     self::$patterns = array(
-      '#https?://twitter\.com/[a-zA-Z0-9_]+/status/(?<id>\d+)#',
+      '#https?://twitter\.com/(?<screenname>[a-zA-Z0-9_]+)/status/(?<id>\d+)#',
     );
 
     $this->options += array(
@@ -50,8 +50,8 @@ class Twitter extends Wrapper {
   /**
    * {@inheritdoc}
    */
-  public function title() {
-    return '';
+  public function url() {
+    return 'https://twitter.com/' . $this->info['screenname'] . '/status/' . $this->info['id'];
   }
 
   /**

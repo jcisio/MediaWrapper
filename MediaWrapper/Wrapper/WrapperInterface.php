@@ -24,6 +24,13 @@ interface WrapperInterface {
   public function title();
 
   /**
+   * Returns url to the media.
+   *
+   * @return string
+   */
+  public function url();
+
+  /**
    * Renders an embedded player.
    *
    * @param array $options

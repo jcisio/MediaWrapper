@@ -52,8 +52,8 @@ class Vimeo extends Wrapper {
   /**
    * {@inheritdoc}
    */
-  public function title() {
-    return '';
+  public function url() {
+    return 'https://vimeo.com/' . $this->info['id'];
   }
 
   /**

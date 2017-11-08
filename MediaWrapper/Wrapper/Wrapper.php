@@ -39,6 +39,12 @@ abstract class Wrapper implements WrapperInterface {
       if (preg_match($pattern, $text, $match)) {
         $id = isset($match['id']) ? $match['id'] : $match[1];
         $this->info = array('id' => $id);
+        // Save all named matches into the info variable.
+        foreach ($match as $key => $value) {
+          if (!is_numeric($key)) {
+            $this->info[$key] = $value;
+          }
+        }
         break;
       }
     }
@@ -69,6 +75,20 @@ abstract class Wrapper implements WrapperInterface {
     }
 
     return $options;
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function url() {
+    return '';
+  }
+
+  /**
+   * {@inheritdoc}
+   */
+  public function title() {
+    return '';
   }
 
   /**

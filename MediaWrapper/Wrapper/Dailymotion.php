@@ -50,8 +50,8 @@ class Dailymotion extends Wrapper {
   /**
    * {@inheritdoc}
    */
-  public function title() {
-    return '';
+  public function url() {
+    return 'https://www.dailymotion.com/video/' . $this->info['id'];
   }
 
   /**

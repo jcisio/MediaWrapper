@@ -48,8 +48,8 @@ class Instagram extends Wrapper {
   /**
    * {@inheritdoc}
    */
-  public function title() {
-    return '';
+  public function url() {
+    return 'https://instagram.com/p/' . $this->info['id'];
   }
 
   /**

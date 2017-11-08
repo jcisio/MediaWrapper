@@ -27,6 +27,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
 
     $m = MediaWrapper::getInstance()->getWrapper('http://www.youtube.com/watch?v=9bZkp7q19f0');
     $this->assertEquals('http://img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg', $m->thumbnail());
+    $this->assertEquals('https://www.youtube.com/watch?v=9bZkp7q19f0', $m->url());
     $this->assertEquals('//img.youtube.com/vi/9bZkp7q19f0/maxresdefault.jpg', $m->thumbnail(FALSE));
     $this->assertImageUrl($m->thumbnail());
     $this->assertEquals('<iframe class="youtube-player" type="text/html" width="560" height="315" src="//www.youtube.com/embed/9bZkp7q19f0?wmode=transparent" frameborder="0"></iframe>', $m->player());
@@ -60,6 +61,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
   public function testDailymotion() {
     $m = MediaWrapper::getInstance()->getWrapper('http://www.dailymotion.com/video/x1mun8');
     $this->assertEquals('x1mun8', $m->getInfo('id'));
+    $this->assertEquals('https://www.dailymotion.com/video/x1mun8', $m->url());
 
     $m = MediaWrapper::getInstance()->getWrapper('http://www.dailymotion.com/video/6pU29dPYNlqCLbwiw');
     $this->assertInstanceOf('MediaWrapper\Wrapper\Dailymotion', $m);
@@ -77,6 +79,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
     $m = MediaWrapper::getInstance()->getWrapper('http://vimeo.com/56488043');
     $this->assertImageUrl($m->thumbnail());
     $this->assertEquals('http://i.vimeocdn.com/video/515444387_640.jpg', $m->thumbnail());
+    $this->assertEquals('https://vimeo.com/56488043', $m->url());
     $this->assertEquals('//i.vimeocdn.com/video/515444387_640.jpg', $m->thumbnail(FALSE));
     $this->assertEquals('<iframe class="vimeo-player" type="text/html" width="560" height="315" src="//player.vimeo.com/video/56488043?byline=0&portrait=0" frameborder="0"></iframe>', $m->player());
   }
@@ -84,6 +87,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
   public function testInstagram() {
     $m = MediaWrapper::getInstance()->getWrapper('http://instagram.com/p/Batz8EDlmR8');
     $this->assertImageUrl($m->thumbnail());
+    $this->assertEquals('https://instagram.com/p/Batz8EDlmR8', $m->url());
     $this->assertContains('class="instagram-media"', $m->player());
   }
 

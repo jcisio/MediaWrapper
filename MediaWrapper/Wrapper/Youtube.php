@@ -108,6 +108,13 @@ class Youtube extends Wrapper {
   /**
    * {@inheritdoc}
    */
+  public function url() {
+    return 'https://www.youtube.com/watch?v=' . $this->info['id'];
+  }
+
+  /**
+   * {@inheritdoc}
+   */
   public function player(array $options = array()) {
     $options = $this->player_options($options, FALSE);
     $query = array_intersect_key($options, array_fill_keys(self::$allowed_options, 0));
