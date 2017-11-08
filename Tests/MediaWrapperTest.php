@@ -82,7 +82,7 @@ class MediaWrapperTest extends PHPUnit_Framework_TestCase {
   }
 
   public function testInstagram() {
-    $m = MediaWrapper::getInstance()->getWrapper('http://instagram.com/p/xjZx0BOOUs');
+    $m = MediaWrapper::getInstance()->getWrapper('http://instagram.com/p/Batz8EDlmR8');
     $this->assertImageUrl($m->thumbnail());
     $this->assertContains('class="instagram-media"', $m->player());
   }
