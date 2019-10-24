@@ -4,13 +4,9 @@
  * PHPUnit tests for MediaWrapper.
  */
 
-// Compatibility with PHPUnit 6.
-if (class_exists('\PHPUnit\Framework\TestCase') && !class_exists('\PHPUnit_Framework_TestCase')) {
-  class_alias('\PHPUnit\Framework\TestCase', '\PHPUnit_Framework_TestCase');
-}
+class MediaWrapperTest extends \PHPUnit\Framework\TestCase {
 
-class MediaWrapperTest extends PHPUnit_Framework_TestCase {
-  function __construct() {
+  function setUp() {
     include_once __DIR__ . '/../MediaWrapper/MediaWrapper.php';
   }
 
