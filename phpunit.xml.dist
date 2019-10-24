@@ -1,10 +1,19 @@
-<phpunit color="true">
-  <testsuites>
-    <testsuite name="MediaWrapper Test Suite">
-      <directory>Tests</directory>
-    </testsuite>
-  </testsuites>
-  <logging>
-    <log type="coverage-clover" target="build/logs/clover.xml"/>
-  </logging>
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         bootstrap="vendor/autoload.php"
+         forceCoversAnnotation="true"
+         beStrictAboutCoversAnnotation="true"
+         beStrictAboutOutputDuringTests="true"
+         beStrictAboutTodoAnnotatedTests="true"
+         verbose="true">
+  <testsuite name="MediaWrapper Test Suite">
+    <directory suffix="Test.php">Tests</directory>
+  </testsuite>
+
+  <filter>
+    <whitelist processUncoveredFilesFromWhitelist="true">
+      <directory suffix=".php">MediaWrapper</directory>
+    </whitelist>
+  </filter>
+
 </phpunit>

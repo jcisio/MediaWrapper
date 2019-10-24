@@ -6,10 +6,6 @@
 
 class MediaWrapperTest extends \PHPUnit\Framework\TestCase {
 
-  function setUp() {
-    include_once __DIR__ . '/../MediaWrapper/MediaWrapper.php';
-  }
-
   public function assertImageUrl($url) {
     $size = getimagesize($url);
     $this->assertTrue(is_array($size));
